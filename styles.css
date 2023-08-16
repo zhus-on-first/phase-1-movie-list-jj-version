@@ -34,6 +34,7 @@ header {
     display: flex;
     flex-direction: column;
     position: fixed;
+    width: 300px;
     bottom: 20px;
     right: 20px;
 
@@ -79,6 +80,13 @@ button#addMovieBtn:hover {
 
 /* Movie genre section styles */
 
+.genre-title {
+    display: flex;
+    background-color: #f4f4f4;
+    color: #000000;
+    padding: 20px;
+}
+
 .movie-genre {
     display: flex;
     flex-direction: column;
@@ -92,15 +100,14 @@ button#addMovieBtn:hover {
 }
 
 .movie-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 200px;
     height: 500px;
     padding: 10px;
     border: 1px solid #ccc;
     margin-right: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
 }
 
 .movie-box img {

@@ -43,6 +43,7 @@ const makeListFeatured = (movies) => {
 };
 
 // Add movie
+
 addMovieBtn.addEventListener("click", () => {
   movieForm.classList.toggle("hidden");
 });
@@ -62,9 +63,20 @@ const renderMovie = (movie, genreSection) => {
   movieBox.innerHTML = `
     <img src="${movie.poster}" alt="${movie.movieName}" />
     <h3 class="movie-name">${movie.movieName}</h3>
-    <p class="movie-rating">${movie.viewRatings}</p>
+    <p class="movie-rating">Rating: ${movie.viewRatings}</p>
   `;
   genreSection.appendChild(movieBox);
+
+  /* mouseOver animations for movie boxes */
+  movieBox.addEventListener("mouseenter", (event) => {
+    console.log("Mouse entered movie box");
+    event.target.style.border = "5px dotted orange";
+  });
+
+  movieBox.addEventListener("mouseleave", (event) => {
+    console.log("Mouse left movie box");
+    event.target.style.border = "";
+  });
 };
 
 const makeList = (movies) => {
@@ -80,8 +92,6 @@ const makeList = (movies) => {
 };
 
 // Implement functionality to increase/decrease ratings
-
-// mouseOver animation for movie boxes
 
 // function rateMovie(movieTitle) {
 //   alert('Rating "' + movieTitle + '"...');
