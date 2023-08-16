@@ -1,12 +1,34 @@
+//TODO: watchlist, favorites, filter, search
+
 // Global variables
 
-const featuredMovie = document.getElementById("featuredMovie");
 const addMovieBtn = document.getElementById("addMovieBtn");
 const saveMovieBtn = document.getElementById("saveMovieBtn");
 const movieForm = document.getElementById("movieForm");
 
 // Featured section
-// next step: show most highly rated. if equal ratings, show alphabetical
+// TODO: randomly change the featured image to show movies rated higher than 8
+
+const renderFeaturedMovie = (movie) => {
+  const featuredPoster = document.querySelector("#featuredPoster");
+  const featuredMovieName = document.querySelector("#featuredMovieName");
+  const featuredRating = document.querySelector("#featuredRating");
+
+  featuredPoster.src = movie.poster;
+  featuredPoster.alt = movie.movieName;
+  featuredMovieName.textContent = movie.movieName;
+  featuredRating.textContent = `Rating: ${movie.viewRatings}`;
+};
+
+const makeListFeatured = (movies) => {
+  movies.forEach((movie) => {
+    const sortMovies = movies.sort(
+      (a, b) => parseFloat(b.viewRatings) - parseFloat(a.viewRatings)
+    );
+    const highestRatedMovie = sortMovies[0];
+    renderFeaturedMovie(highestRatedMovie);
+  });
+};
 
 // Add movie
 addMovieBtn.addEventListener("click", () => {
@@ -18,8 +40,8 @@ saveMovieBtn.addEventListener("click", () => {
   form.reset();
 });
 
-// Render selected movie by its genre, group movies by genre, fetch
-// TODO: populate by genre dynamically, populate other genre section randomly
+// Movies by genre
+// TODO: populate by genre dynamically so all genres are shown
 
 const renderMovie = (movie, genreSection) => {
   console.log("Rendering movie:", movie.movieName);
@@ -49,6 +71,7 @@ fetch("http://localhost:3000/moviesDB")
   .then((response) => response.json())
   .then((movies) => {
     makeList(movies);
+    makeListFeatured(movies);
   })
   .catch((error) => {
     console.log("Error fetching data:", error);
@@ -57,14 +80,6 @@ fetch("http://localhost:3000/moviesDB")
 // Implement functionality to increase/decrease ratings
 
 // mouseOver animation for movie boxes
-
-// function addToFavorites(movieTitle) {
-//   alert('Added "' + movieTitle + '" to Favorites!');
-// }
-
-// function addToWatchList(movieTitle) {
-//   alert('Added "' + movieTitle + '" to WatchList!');
-// }
 
 // function rateMovie(movieTitle) {
 //   alert('Rating "' + movieTitle + '"...');

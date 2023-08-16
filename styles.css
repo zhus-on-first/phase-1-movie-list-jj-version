@@ -22,6 +22,7 @@ header {
     justify-content: center;
     height: 300px;
     background-color: #f4f4f4;
+    overflow: hidden;
 }
 
 .featuredOverlay {
