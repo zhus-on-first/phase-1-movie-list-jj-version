@@ -15,6 +15,7 @@ header {
 }
 
 /* Featured movie section styles */
+/* TODO spacing between img and info */
 
 #featuredMovie {
     display: flex;
@@ -25,14 +26,18 @@ header {
     overflow: hidden;
 }
 
-.featuredMovieInfo {
-    background-color: #000000cc;
-    color: white;
-    padding: 10px;
-    opacity: 1
-}
+/* .featuredMovieInfo {not currently used} */
 
-/* Add a movie button and form styles */
+/* Add a movie button and form */
+
+.add-movie {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+}
 
 button#addMovieBtn {
     background-color: #ff3333;
@@ -41,9 +46,6 @@ button#addMovieBtn {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 20px
 }
 
 button#addMovieBtn:hover {
