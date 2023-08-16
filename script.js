@@ -6,6 +6,18 @@ const addMovieBtn = document.getElementById("addMovieBtn");
 const saveMovieBtn = document.getElementById("saveMovieBtn");
 const movieForm = document.getElementById("movieForm");
 
+// Fetch data for featured and genre sections
+
+fetch("http://localhost:3000/moviesDB")
+  .then((response) => response.json())
+  .then((movies) => {
+    makeList(movies);
+    makeListFeatured(movies);
+  })
+  .catch((error) => {
+    console.log("Error fetching data:", error);
+  });
+
 // Featured section
 // TODO: randomly change the featured image to show movies rated higher than 8
 
@@ -41,7 +53,7 @@ saveMovieBtn.addEventListener("click", () => {
 });
 
 // Movies by genre
-// TODO: populate by genre dynamically so all genres are shown
+// TODO: populate by genre dynamically so all genres are shown alphabetically
 
 const renderMovie = (movie, genreSection) => {
   console.log("Rendering movie:", movie.movieName);
@@ -66,16 +78,6 @@ const makeList = (movies) => {
     });
   });
 };
-
-fetch("http://localhost:3000/moviesDB")
-  .then((response) => response.json())
-  .then((movies) => {
-    makeList(movies);
-    makeListFeatured(movies);
-  })
-  .catch((error) => {
-    console.log("Error fetching data:", error);
-  });
 
 // Implement functionality to increase/decrease ratings
 
