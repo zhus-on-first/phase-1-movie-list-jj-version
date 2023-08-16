@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="./script.js"></script>
+    <title>Flick Pulse -- Your Ultimate Movie Experience</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo-title">
+        <h1 class="logo-title">&#128514; Flick Pulse</h1>
+      </div>
+    </header>
+
+    <!-- Main Section -->
+    <!-- Featured Movie -->
+    <section id="featuredMovie">
+      <img src="" alt="" id="featuredPoster" />
+      <div class="featuredOverlay">
+        <h2 id="featuredMovieName">test</h2>
+        <p id="featuredRating">test</p>
+      </div>
+    </section>
+
+    <!-- Add Movie Form -->
+    <button id="addMovieBtn">Add Movie</button>
+    <div class="hidden" id="movieForm">
+      <div class="form-field">
+        <input type="text" id="posterInput" placeholder="Movie Poster URL" />
+        <input type="text" id="nameInput" placeholder="Movie Name" />
+        <input type="text" id="actorsInput" placeholder="Actors" />
+        <textarea id="descriptionInput" placeholder="Description"></textarea>
+        <input type="text" id="genreInput" placeholder="Genre" />
+        <input type="text" id="ratingInput" placeholder="rating" />
+        <button type="submit" id="saveMovieBtn">Save Movie</button>
+      </div>
+    </div>
+
+    <!-- Horror Genre Row -->
+    <section class="movie-genre" id="horror">
+      <h1>Horror Movies</h1>
+      <div class="movie-row">
+        <!-- Add movies here -->
+      </div>
+    </section>
+
+    <!-- Animation Genre Row -->
+    <section class="movie-genre" id="animation">
+      <h1>Animation Movies</h1>
+      <div class="movie-row">
+        <!-- Add movies here -->
+      </div>
+    </section>
+
+    <!-- Footer-->
+    <footer>&copy; 2013 Jazlin, Jia-Jia, Oliver</footer>
+  </body>
+</html>
