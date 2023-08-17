@@ -4,9 +4,9 @@
       "viewRatings": "7.6",
       "poster": "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
       "movieName": "Guardians of the Galaxy Vol. 2",
-      "actors": ["Chris Pratt, Zoe Saldana, Dave Bautista"],
+      "actors": ["Chris Pratt", "Zoe Saldana", "Dave Bautista"],
       "description": "The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father, the ambitious celestial being Ego.",
-      "genre": ["Action, Adventure, Comedy"]
+      "genre": ["Action", "Adventure", "Comedy"]
     },
     {
       "viewRatings": "8.0",
