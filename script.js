@@ -3,7 +3,6 @@
 // Global variables
 
 const addMovieBtn = document.getElementById("addMovieBtn");
-const movieForm = document.getElementById("movieForm");
 
 // Fetch data for featured and genre sections
 
@@ -50,28 +49,27 @@ addMovieBtn.addEventListener("click", () => {
 
 // TODO add form validation: capital letters, field type, what if a field left blank, what if only 1 actor or 1 genre, how is rating value entered
 
-movieForm.addEventListener("submit", (event) => {
+// Add movie submit
+const movieFormField = document.getElementById("movieFormField");
+
+movieFormField.addEventListener("submit", (event) => {
   event.preventDefault();
 
   // Grab form inputs
-  const viewRatingsInput = document.querySelector("#viewRatingsInput");
-  const posterInput = document.querySelector("#posterInput");
-  const movieNameInput = document.querySelector("#movieNameInput");
-  const actorsInput = document.querySelector("#actorsInput");
-  const descriptionInput = document.querySelector("#descriptionInput");
-  const genreInput = document.querySelector("#genreInput");
-
-  // Map form inputs to JSON variables
   const newMovie = {
-    viewRatings: viewRatingsInput.value,
-    poster: posterInput.value,
-    movieName: movieNameInput.value,
-    actors: actorsInput.value,
-    description: descriptionInput.value,
-    genre: genreInput.value,
+    viewRatings: Number(event.target.viewRatingsInput.value),
+    poster: event.target.posterInput.value,
+    movieName: event.target.movieNameInput.value,
+    actors: event.target.actorsInput.value
+      .split(",")
+      .map((actor) => actor.trim()),
+    description: event.target.descriptionInput.value,
+    genre: event.target.genreInput.value
+      .split(",")
+      .map((actor) => actor.trim()),
   };
 
-  // Post inputs using fetch
+  // Post inputs
   fetch("http://localhost:3000/moviesDB", {
     method: "POST",
     headers: {
@@ -80,12 +78,14 @@ movieForm.addEventListener("submit", (event) => {
     body: JSON.stringify(newMovie),
   })
     .then((response) => {
+      d;
       if (response.ok) {
         alert("Movie added successfully!");
-        movieForm.reset();
+        renderMovie(newMovie);
       } else {
         alert("Error adding movie. Please try again.");
       }
+      movieFormField.reset();
     })
     .catch((error) => {
       console.error("Error adding movie:", error);
