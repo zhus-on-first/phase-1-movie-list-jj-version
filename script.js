@@ -70,7 +70,6 @@ const renderMovie = (movie, genreSection) => {
   genreSection.appendChild(movieBox);
 
   /* mouseOver animations for movie boxes */
-  //TODO not have lower elements repositioned
 
   movieBox.addEventListener("mouseenter", (event) => {
     console.log("Mouse entered movie box");
