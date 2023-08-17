@@ -1,6 +1,6 @@
 /* General styles */
 body {
-    font-family: 'Courier New', Courier, monospace, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
 }
@@ -15,7 +15,6 @@ header {
 }
 
 /* Featured movie section styles */
-/* TODO spacing between img and info */
 
 #featuredMovie {
     display: flex;
@@ -24,9 +23,8 @@ header {
     height: 300px;
     background-color: #f4f4f4;
     overflow: hidden;
+    gap: 20px;
 }
-
-/* .featuredMovieInfo {not currently used} */
 
 /* Add a movie button and form */
 
@@ -41,7 +39,7 @@ header {
 
 }
 
-button#addMovieBtn {
+#addMovieBtn {
     background-color: #ff3333;
     color: white;
     font-size: 24px;
@@ -49,10 +47,6 @@ button#addMovieBtn {
     padding: 10px 20px;
     cursor: pointer;
 }
-
-/* button#addMovieBtn:hover {
-    background-color: #3cc1e9;
-} */
 
 .hidden {
     display: none;
