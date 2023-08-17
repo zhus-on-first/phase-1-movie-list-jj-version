@@ -3,7 +3,6 @@
 // Global variables
 
 const addMovieBtn = document.getElementById("addMovieBtn");
-const saveMovieBtn = document.getElementById("saveMovieBtn");
 const movieForm = document.getElementById("movieForm");
 
 // Fetch data for featured and genre sections
@@ -43,13 +42,16 @@ const makeListFeatured = (movies) => {
 };
 
 // Add movie
+//TODO close add movie form with click anywhere else
 
 addMovieBtn.addEventListener("click", () => {
   movieForm.classList.toggle("hidden");
 });
 
-saveMovieBtn.addEventListener("click", () => {
-  // Post
+// TODO add form validationsaveMovieBtn.addEventListener("click", () => {})
+movieForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
   form.reset();
 });
 
@@ -68,14 +70,16 @@ const renderMovie = (movie, genreSection) => {
   genreSection.appendChild(movieBox);
 
   /* mouseOver animations for movie boxes */
+  //TODO not have lower elements repositioned
+
   movieBox.addEventListener("mouseenter", (event) => {
     console.log("Mouse entered movie box");
-    event.target.style.border = "5px dotted orange";
+    event.target.style.outline = "5px dotted orange";
   });
 
   movieBox.addEventListener("mouseleave", (event) => {
     console.log("Mouse left movie box");
-    event.target.style.border = "";
+    event.target.style.outline = "";
   });
 };
 
@@ -91,7 +95,7 @@ const makeList = (movies) => {
   });
 };
 
-// Implement functionality to increase/decrease ratings
+// TODO: Implement functionality to increase/decrease ratings
 
 // function rateMovie(movieTitle) {
 //   alert('Rating "' + movieTitle + '"...');
