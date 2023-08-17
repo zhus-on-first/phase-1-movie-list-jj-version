@@ -50,9 +50,9 @@ button#addMovieBtn {
     cursor: pointer;
 }
 
-button#addMovieBtn:hover {
+/* button#addMovieBtn:hover {
     background-color: #3cc1e9;
-}
+} */
 
 .hidden {
     display: none;

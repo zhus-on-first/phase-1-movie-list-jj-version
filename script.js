@@ -48,11 +48,48 @@ addMovieBtn.addEventListener("click", () => {
   movieForm.classList.toggle("hidden");
 });
 
-// TODO add form validationsaveMovieBtn.addEventListener("click", () => {})
+// TODO add form validation: capital letters, field type, what if a field left blank, what if only 1 actor or 1 genre, how is rating value entered
+
 movieForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  form.reset();
+  // Grab form inputs
+  const viewRatingsInput = document.querySelector("#viewRatingsInput");
+  const posterInput = document.querySelector("#posterInput");
+  const movieNameInput = document.querySelector("#movieNameInput");
+  const actorsInput = document.querySelector("#actorsInput");
+  const descriptionInput = document.querySelector("#descriptionInput");
+  const genreInput = document.querySelector("#genreInput");
+
+  // Map form inputs to JSON variables
+  const newMovie = {
+    viewRatings: viewRatingsInput.value,
+    poster: posterInput.value,
+    movieName: movieNameInput.value,
+    actors: actorsInput.value,
+    description: descriptionInput.value,
+    genre: genreInput.value,
+  };
+
+  // Post inputs using fetch
+  fetch("http://localhost:3000/moviesDB", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newMovie),
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert("Movie added successfully!");
+        movieForm.reset();
+      } else {
+        alert("Error adding movie. Please try again.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error adding movie:", error);
+    });
 });
 
 // Movies by genre
