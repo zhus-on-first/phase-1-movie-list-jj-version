@@ -3,18 +3,7 @@
 const addMovieBtn = document.getElementById("addMovieBtn");
 const movieForm = document.getElementById("movieForm");
 
-const renderNewMovie = (newMovie) => {
-  newMovie.genre.forEach((genre) => {
-    const genres = genre.split(", ").map((g) => g.toLowerCase());
-    genres.forEach((g) => {
-      const genreSection = document.querySelector(`#${g} .movie-row`);
-      if (genreSection !== null) renderMovie(newMovie, genreSection);
-    });
-  });
-};
-
 // Featured section
-
 const renderFeaturedMovie = (movie) => {
   const featuredPoster = document.querySelector("#featuredPoster");
   const featuredMovieName = document.querySelector("#featuredMovieName");
@@ -77,6 +66,17 @@ movieFormField.addEventListener("submit", (event) => {
     .catch((error) => {
       console.error("Error adding movie:", error);
     });
+
+  const renderNewMovie = (newMovie) => {
+    newMovie.genre.forEach((genre) => {
+      const genres = genre.split(", ").map((g) => g.toLowerCase());
+      genres.forEach((g) => {
+        const genreSection = document.querySelector(`#${g} .movie-row`);
+        if (genreSection !== null) renderMovie(newMovie, genreSection);
+      });
+      renderNewMovie(newMovie);
+    });
+  };
 });
 
 // Movies by genre
@@ -95,7 +95,8 @@ const renderMovie = (movie, genreSection) => {
 
   movieBox.addEventListener("mouseenter", (event) => {
     console.log("Mouse entered movie box");
-    movieBox.style.outline = "5px dotted orange";
+    movieBox.style.outline = "4px dotted #888";
+    movieBox.style.transition = "outline 0.2s";
   });
 
   movieBox.addEventListener("mouseleave", (event) => {
@@ -123,7 +124,6 @@ fetch("http://localhost:3000/moviesDB")
   .then((movies) => {
     makeList(movies);
     makeListFeatured(movies);
-    renderNewMovie(newMovie);
   })
   .catch((error) => {
     console.log("Error fetching data:", error);
